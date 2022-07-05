@@ -1,11 +1,17 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { ReactComponent as BuregMenu } from "../../assets/burger-menu.svg";
 import { ReactComponent as CloseIcon } from "../../assets/close.svg";
 import "./MobileMenu.scss";
 
 export default function MobileMenu() {
   const [isOpen, setIsopen] = useState<boolean>(false);
+  const navigate = useNavigate();
+
+  const Logout = (): void => {
+    localStorage.removeItem("currentUser");
+    navigate("/");
+  };
 
   const toggleMobileMenu = (): void => {
     setIsopen(!isOpen);
@@ -24,7 +30,7 @@ export default function MobileMenu() {
         </NavLink>
 
         {localStorage.getItem("currentUser") ? (
-          <span className="mobile-link" onClick={() => {}}>
+          <span className="mobile-link" onClick={Logout}>
             Log Out
           </span>
         ) : (
