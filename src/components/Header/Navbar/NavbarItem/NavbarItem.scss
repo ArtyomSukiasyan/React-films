@@ -1,0 +1,9 @@
+@import "../../../../styles/variables.scss";
+
+.menu-item {
+  background-color: $secondary-color;
+  color: $primary-color;
+  text-decoration: none;
+  padding: 8px 24px;
+  border-radius: 8px;
+}

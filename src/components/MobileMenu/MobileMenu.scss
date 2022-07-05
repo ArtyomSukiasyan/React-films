@@ -1,0 +1,39 @@
+@import "../../styles/variables.scss";
+
+.burger-menu {
+  width: 20px;
+  fill: $secondary-color;
+}
+
+.sidebar {
+  width: 280px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  z-index: 11;
+  transition: 0.5s;
+  font-size: 16px;
+  background-color: $secondary-color;
+
+  .close-icon {
+    width: 20px;
+    fill: $primary-color;
+    margin-left: auto;
+    margin-right: 8px;
+    margin-top: 8px;
+  }
+
+  .mobile-link {
+    text-decoration: none;
+    color: $primary-color;
+    margin-bottom: 8px;
+    padding-left: 8px;
+  }
+}
+
+.active {
+  right: 0;
+}

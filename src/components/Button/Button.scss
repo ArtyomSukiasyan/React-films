@@ -1,0 +1,27 @@
+@import "../../styles/variables.scss";
+
+button {
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.auth {
+  width: 25%;
+  background-color: $primary-color;
+  color: $secondary-color;
+  padding: 8px;
+}
+
+.log-out {
+  background-color: $secondary-color;
+  color: $primary-color;
+  padding: 8px 24px;
+}
+
+.create-post {
+  width: 10%;
+  background-color: $primary-color;
+  color: $secondary-color;
+  padding: 8px;
+}
