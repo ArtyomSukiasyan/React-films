@@ -11,7 +11,7 @@ import { IFilm } from "./models/Film";
 import { API_URL } from "./constants/apiUrl";
 
 function App(): ReactElement {
-  const [favourites, setfavourites] = useState<IFilm[]>([]);
+  const [favourites, setFavourites] = useState<IFilm[]>([]);
   const [filmsData, setFilmsData] = useState<IFilm[]>([]);
 
   const currentUser = localStorage.getItem("currentUser") || emptyString;
@@ -27,9 +27,11 @@ function App(): ReactElement {
   }, []);
 
   const addFavorite = (id: number): void => {
-    const newFavorite = filmsData.find((item: IFilm) => item.id === id);
+    const newFavorite: IFilm | undefined = filmsData.find(
+      (item: IFilm) => item.id === id
+    );
 
-    setfavourites((prevfavourites: IFilm[]): any => [
+    setFavourites((prevfavourites: IFilm[]): any => [
       ...prevfavourites,
       newFavorite,
     ]);
@@ -42,7 +44,7 @@ function App(): ReactElement {
       .slice(0, index)
       .concat(favourites.slice(index + 1));
 
-    setfavourites(newfavourites);
+    setFavourites(newfavourites);
   };
 
   return (

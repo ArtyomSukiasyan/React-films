@@ -1,5 +1,6 @@
 import { ReactElement } from "react";
 import { IFilm } from "../../models/Film";
+import { IFilms } from "../../models/Films";
 import FilmCard from "../FilmCard/FilmCard";
 import "./Films.scss";
 
@@ -9,7 +10,7 @@ export default function Films({
   handleLike,
   handleUnlike,
   favouritesPage = false,
-}: any): ReactElement {
+}: IFilms): ReactElement {
   if (favouritesPage) {
     filmsData = favourites;
   }

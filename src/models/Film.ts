@@ -3,6 +3,9 @@ export interface IFilm {
   backdrop_path: string;
   genre_ids: number[];
   original_title: string;
+  favourites: IFilm[];
+  handleLike: Function;
+  handleUnlike: Function;
   adult?: boolean;
   original_language?: string;
   overview?: string;

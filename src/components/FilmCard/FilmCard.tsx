@@ -3,9 +3,10 @@ import Image from "../Image/Image";
 import Categories from "../Categories/Categories";
 import { ReactComponent as FavouriteIcon } from "../../assets/favourite.svg";
 import "./FilmCard.scss";
+import { IFilm } from "../../models/Film";
 
-const isFavourite = (id: any, favourites: any) => {
-  return favourites.some((el: any) => el.id === id);
+const isFavourite = (id: number, favourites: IFilm[]) => {
+  return favourites.some((el: IFilm) => el.id === id);
 };
 
 export default function FilmCard({
@@ -16,7 +17,7 @@ export default function FilmCard({
   favourites,
   handleLike,
   handleUnlike,
-}: any): ReactElement {
+}: IFilm): ReactElement {
   return (
     <div key={id} className="film-container">
       <Image backdrop_path={backdrop_path} original_title={original_title} />
