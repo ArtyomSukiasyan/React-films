@@ -1,21 +1,18 @@
-import { ReactElement, useEffect, useState } from "react";
-import { API_URL } from "../../constants/apiUrl";
+import { ReactElement } from "react";
 import { IFilm } from "../../models/Film";
 import FilmCard from "../FilmCard/FilmCard";
 import "./Films.scss";
 
-export default function Films(): ReactElement {
-  const [filmsData, setFilmsData] = useState<IFilm[]>([]);
-
-  useEffect(() => {
-    async function fetchApi() {
-      const response = await fetch(API_URL);
-      const movies = await response.json();
-      const res: IFilm[] = movies.results;
-      setFilmsData(res);
-    }
-    fetchApi();
-  }, []);
+export default function Films({
+  filmsData,
+  favourites,
+  handleLike,
+  handleUnlike,
+  favouritesPage = false,
+}: any): ReactElement {
+  if (favouritesPage) {
+    filmsData = favourites;
+  }
 
   return (
     <div className="films-container">
@@ -23,6 +20,9 @@ export default function Films(): ReactElement {
         return (
           <FilmCard
             key={film.id}
+            handleLike={handleLike}
+            handleUnlike={handleUnlike}
+            favourites={favourites}
             id={film.id}
             original_title={film.original_title}
             backdrop_path={film.backdrop_path}
