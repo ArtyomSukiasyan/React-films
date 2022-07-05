@@ -9,14 +9,14 @@
   cursor: pointer;
   text-align: center;
   margin: 4px;
-}
 
-.favourite-icon {
-  width: 30px;
-  fill: $secondary-color;
-  margin-top: 16px;
-}
+  .favourite-icon {
+    width: 30px;
+    fill: $secondary-color;
+    margin-top: 16px;
+  }
 
-h2{
-  min-height: 70px;
+  h2 {
+    min-height: 70px;
+  }
 }

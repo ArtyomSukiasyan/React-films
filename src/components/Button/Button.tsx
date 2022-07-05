@@ -1,3 +1,4 @@
+import { ReactElement } from "react";
 import { IButton } from "../../models/Button";
 import "./Button.scss";
 
@@ -6,7 +7,7 @@ export default function Button({
   onClick,
   title,
   disabled,
-}: IButton) {
+}: IButton): ReactElement {
   return (
     <button className={className} onClick={onClick} disabled={disabled}>
       {title}

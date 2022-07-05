@@ -1,6 +1,7 @@
-import "./Image.scss"
+import { IImage } from "../../models/Image";
+import "./Image.scss";
 
-export default function Image({ backdrop_path, original_title }: any) {
+export default function Image({ backdrop_path, original_title }: IImage) {
   return (
     <img
       src={

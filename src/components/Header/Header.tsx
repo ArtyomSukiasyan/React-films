@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import Navbar from "./Navbar/Navbar";
-import "./Header.scss";
 import MobileMenu from "../MobileMenu/MobileMenu";
+import "./Header.scss";
 
 export default function Header(): ReactElement {
   return (

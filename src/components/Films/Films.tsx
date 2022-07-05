@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { API_URL } from "../../constants/apiUrl";
 import { IFilm } from "../../models/Film";
 import FilmCard from "../FilmCard/FilmCard";
-import "./Films.scss"
+import "./Films.scss";
 
-export default function Films() {
+export default function Films(): ReactElement {
   const [filmsData, setFilmsData] = useState<IFilm[]>([]);
 
   useEffect(() => {
