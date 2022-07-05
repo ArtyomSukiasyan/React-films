@@ -6,9 +6,10 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import SignIn from "./components/SignIn/SignIn";
 import Login from "./components/LogIn/Login";
 import ErrorPage from "./components/404/404";
+import { emptyString } from "./constants/ValidationMessages";
 
 function App(): ReactElement {
-  const currentUser = localStorage.getItem("currentUser") || "";
+  const currentUser = localStorage.getItem("currentUser") || emptyString;
 
   return (
     <>
