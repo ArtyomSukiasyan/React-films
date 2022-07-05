@@ -1,5 +1,8 @@
+import "./App.scss";
+import Films from "./components/Films/Films";
+
 function App() {
-  return <h1>Films site</h1>;
+  return <Films />;
 }
 
 export default App;
