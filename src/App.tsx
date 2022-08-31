@@ -8,7 +8,13 @@ import Login from "./components/LogIn/Login";
 import ErrorPage from "./components/404/404";
 import { emptyString } from "./constants/ValidationMessages";
 import { IFilm } from "./models/Film";
-import { API_URL } from "./constants/apiUrl";
+import {
+  API_KEY,
+  BASE_API,
+  DEFAULR_ACTION_API,
+  SEARCH_ACTION_API,
+} from "./constants/apiUrl";
+import FilmsNotFound from "./components/filmsNotFound/filmsNotFouns";
 
 function App(): ReactElement {
   const [favourites, setFavourites] = useState<IFilm[]>([]);
@@ -18,11 +24,14 @@ function App(): ReactElement {
 
   useEffect(() => {
     async function fetchApi() {
-      const response = await fetch(API_URL);
+      const response = await fetch(
+        `${BASE_API}/${DEFAULR_ACTION_API}${API_KEY}`
+      );
       const movies = await response.json();
       const res: IFilm[] = movies.results;
       setFilmsData(res);
     }
+
     fetchApi();
   }, []);
 
@@ -47,20 +56,52 @@ function App(): ReactElement {
     setFavourites(newfavourites);
   };
 
+  const searchMovie = async (e: any) => {
+    e.preventDefault();
+
+    if (e.target.value === "") {
+      const response = await fetch(
+        `${BASE_API}/${DEFAULR_ACTION_API}${API_KEY}`
+      );
+      const movies = await response.json();
+      const res: IFilm[] = movies.results;
+      setFilmsData(res);
+
+      return;
+    }
+
+    try {
+      const response = await fetch(
+        `${BASE_API}/${SEARCH_ACTION_API}${API_KEY}&query=${e.target.value}`
+      );
+
+      const movies = await response.json();
+      const res: IFilm[] = movies.results;
+
+      setFilmsData(res);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <>
-      <Header />
+      <Header search={searchMovie} />
       <div className="content-wrapper">
         <Routes>
           <Route
             path="/"
             element={
-              <Films
-                filmsData={filmsData}
-                favourites={favourites}
-                handleLike={addFavorite}
-                handleUnlike={removeFavorite}
-              />
+              filmsData.length > 0 ? (
+                <Films
+                  filmsData={filmsData}
+                  favourites={favourites}
+                  handleLike={addFavorite}
+                  handleUnlike={removeFavorite}
+                />
+              ) : (
+                <FilmsNotFound />
+              )
             }
           ></Route>
 

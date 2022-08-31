@@ -4,19 +4,19 @@ import Button from "../../Button/Button";
 import Input from "../../Input/Input";
 import { useNavigate } from "react-router-dom";
 
-export default function Navbar(): ReactElement {
+export default function Navbar({ search }: any): ReactElement {
   const navigate = useNavigate();
 
   const Logout = (): void => {
     localStorage.removeItem("currentUser");
     navigate("/");
   };
-  
+
   return (
     <>
       <NavbarItem href="/" title="Home" />
       <NavbarItem href="/favourites" title="Favourites" />
-      <Input type="text" placeholder="search" onChange={() => {}} />
+      <Input type="text" placeholder="search" onChange={search} />
       {localStorage.getItem("currentUser") ? (
         <Button className="log-out" onClick={Logout} title="Log out" />
       ) : (
